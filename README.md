@@ -1,5 +1,4 @@
 # winamr
 sample project
 
-Below are the screenshots
---------------------------------
+You can see screenshots in Issues tab.
