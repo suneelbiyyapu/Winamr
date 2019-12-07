@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:GradientContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:winamr.Controls"
+             x:Class="winamr.Views.LoginView"
+                              StartColor="#FBAF5A"
+                              EndColor="#EE4890">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="EntryStyle" TargetType="controls:CustomEntry">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="PlaceholderColor" Value="White" />
+                <Setter Property="BorderColor" Value="White" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Margin="30,20,30,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="10">
+            <!--<Label Text="Login" FontSize="Large" TextColor="Black" TextDecorations="Underline" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0"></Label>-->
+            
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <!--<Image Source="xamarin_logo.png" HorizontalOptions="Center" Aspect="AspectFit" Margin="0,0,0,50"></Image>-->
+
+                <Label Text="Semushi" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White" FontSize="Large" Margin="0,0,0,50"></Label>
+
+                <controls:CustomEntry x:Name="emailEntry" Placeholder="Email ID / Mobile Number" ReturnType="Next" Text="{Binding UserName, Mode=TwoWay}" Style="{StaticResource EntryStyle}">
+                    <!--<Entry.Behaviors>
+                        <local:EmailValidationBehavior></local:EmailValidationBehavior>
+                    </Entry.Behaviors>-->
+                </controls:CustomEntry>
+
+                <controls:CustomEntry x:Name="passwordEntry" ReturnType="Done" MaxLength="12" IsPassword="True" Placeholder="Password" Text="{Binding Password, Mode=TwoWay}" Style="{StaticResource EntryStyle}"/>
+
+                <Button x:Name="btnLogin" FontSize="Medium" TextColor="White" BorderColor="Black" BackgroundColor="#FB7C5A"  CornerRadius="5" HorizontalOptions="Fill" Text="Sign In" Command="{Binding LoginCommand}"/>
+
+                <StackLayout Orientation="Horizontal">
+                    <Button TextColor="Blue" 
+                            BackgroundColor="Transparent" 
+                            Text="Register here" 
+                            FontSize="13" 
+                            FontAttributes="Bold" 
+                            HorizontalOptions="StartAndExpand" 
+                            Command="{Binding RegisterCommand}"/>
+                    <Button TextColor="Blue" 
+                            BackgroundColor="Transparent" 
+                            Text="Forgot Password" 
+                            FontSize="13" 
+                            FontAttributes="Bold" 
+                            HorizontalOptions="EndAndExpand" 
+                            Command="{Binding ForgotPasswordCommand}"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</controls:GradientContentPage>
