@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace winamr.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainViewDetail : ContentPage
+    public partial class DeviceListView : ContentPage
     {
-        public MainViewDetail()
+        public DeviceListView()
         {
             InitializeComponent();
         }

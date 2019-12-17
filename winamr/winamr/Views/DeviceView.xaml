@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:behaviors="clr-namespace:winamr.Behaviors"
+             xmlns:templates="clr-namespace:winamr.Templates"
+             x:Class="winamr.Views.DeviceView"
+             Title="Devices"
+             Style="{StaticResource NavPageHeaderStyle}" >
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="lvDevicess" SeparatorVisibility="None"
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding Devices.Devices}">
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding DeviceTappedCommand}"></behaviors:EventToCommandBehavior>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <templates:DevicesTemplate />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

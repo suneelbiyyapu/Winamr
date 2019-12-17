@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:behaviors="clr-namespace:winamr.Behaviors"
+             x:Class="winamr.Templates.DeviceListTemplate">
+    <ContentView Padding="5">
+        <Frame OutlineColor="Gray" Padding="10">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="{Binding DeviceGroupName}" FontSize="22" HorizontalOptions="StartAndExpand"/>
+                <Switch IsToggled="{Binding IsDeviceGroupEnable, Mode=TwoWay}" HorizontalOptions="End">
+                    <Switch.Behaviors>
+                        <behaviors:EventToCommandBehavior EventName="Toggled" Command="{Binding ToggleIsDeviceGroupEnableCommand}"></behaviors:EventToCommandBehavior>
+                    </Switch.Behaviors>
+                </Switch>
+            </StackLayout>
+        </Frame>
+    </ContentView>
+</ContentView>

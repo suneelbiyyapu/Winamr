@@ -2,15 +2,12 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="winamr.Views.MainView"
-             xmlns:pages="clr-namespace:winamr.Views">
-  <MasterDetailPage.Master>
-    <pages:MainViewMaster x:Name="MasterPage" />
-  </MasterDetailPage.Master>
-  <MasterDetailPage.Detail>
-    <NavigationPage>
-      <x:Arguments>
-        <pages:MainViewDetail />
-      </x:Arguments>
-    </NavigationPage>
-  </MasterDetailPage.Detail>
+             xmlns:pages="clr-namespace:winamr.Views"
+                  MasterBehavior="Popover">
+    <MasterDetailPage.Master>
+        <pages:MenuView x:Name="MasterPage" BindingContext="{Binding MenuViewModel}" />
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <ContentPage></ContentPage>
+    </MasterDetailPage.Detail>
 </MasterDetailPage>

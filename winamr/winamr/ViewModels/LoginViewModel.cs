@@ -71,17 +71,22 @@ namespace winamr.ViewModels
             IsBusy = true;
             if (_connectionService.IsConnected)
             {
+            
                 var authenticationResponse = await _authenticationService.Authenticate(UserName, Password);
 
                 if (authenticationResponse.IsAuthenticated)
                 {
-                    // we store the Id to know if the user is already logged in to the application
-                    _settingsService.UserIdSetting = authenticationResponse.User.Id;
-                    _settingsService.UserNameSetting = authenticationResponse.User.FirstName;
+                */
 
-                    IsBusy = false;
-                    await _navigationService.NavigateToAsync<MainViewModel>();
+            // we store the Id to know if the user is already logged in to the application
+            _settingsService.UserIdSetting = "Test User"; // authenticationResponse.User.Id;
+            _settingsService.UserNameSetting = "Test User"; // authenticationResponse.User.FirstName;
+
+            //IsBusy = false;
+            await _navigationService.NavigateToAsync<MainViewModel>();
+            /*
                 }
+                
             }
             else
             {

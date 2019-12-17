@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace winamr.Views
+namespace winamr.Templates
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainView : MasterDetailPage
+    public partial class DeviceListTemplate : ContentView
     {
-        public MainView()
+        public DeviceListTemplate()
         {
             InitializeComponent();
         }

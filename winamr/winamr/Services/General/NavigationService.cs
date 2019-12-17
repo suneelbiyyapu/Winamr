@@ -98,7 +98,9 @@ namespace winamr.Services
 
             _mappings.Add(typeof(LoginViewModel), typeof(LoginView));
             _mappings.Add(typeof(MainViewModel), typeof(MainView));
-            //_mappings.Add(typeof(MenuViewModel), typeof(MenuView));
+            _mappings.Add(typeof(MenuViewModel), typeof(MenuView));
+            _mappings.Add(typeof(DeviceListViewModel), typeof(DeviceListView));
+            _mappings.Add(typeof(DeviceViewModel), typeof(DeviceView));
             //_mappings.Add(typeof(HomeViewModel), typeof(HomeView));
             //_mappings.Add(typeof(CheckoutViewModel), typeof(CheckoutView));
             //_mappings.Add(typeof(ContactViewModel), typeof(ContactView));
@@ -122,8 +124,6 @@ namespace winamr.Services
             }
             else if (CurrentApplication.MainPage is MainView)
             {
-                // TODO: Uncomment below lines once you added All views
-                /*
                 var mainPage = CurrentApplication.MainPage as MainView;
 
                 if (mainPage.Detail is CustomNavigationPage navigationPage)
@@ -142,7 +142,6 @@ namespace winamr.Services
                 }
 
                 mainPage.IsPresented = false;
-                */
             }
             else
             {

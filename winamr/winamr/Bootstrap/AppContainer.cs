@@ -24,6 +24,10 @@ namespace winamr.Bootstrap
             // Register All ViewModels
             builder.RegisterType<LoginViewModel>();
             builder.RegisterType<RegistrationViewModel>();
+            builder.RegisterType<MainViewModel>();
+            builder.RegisterType<MenuViewModel>();
+            builder.RegisterType<DeviceListViewModel>();
+            builder.RegisterType<DeviceViewModel>();
 
             // Register all data services
             // builder.RegisterType<CatalogDataService>().As<ICatalogDataService>();
