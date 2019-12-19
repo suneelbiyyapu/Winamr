@@ -7,25 +7,94 @@
              xmlns:behaviors="clr-namespace:winamr.Behaviors"
              xmlns:templates="clr-namespace:winamr.Templates"
              x:Class="winamr.Views.DeviceListView"
+             xmlns:controls="clr-namespace:winamr.Controls"
              Title="Device Groups"
              x:Name="DeviceListViewPage"
              Style="{StaticResource NavPageHeaderStyle}" >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="EntryStyle" TargetType="controls:CustomEntry">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="PlaceholderColor" Value="Silver" />
+                <Setter Property="BorderColor" Value="#EE4890" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+"
+                 Order="Primary"
+                 Command="{Binding AddDeviceGroupCommand}"
+                 Priority="0" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <ListView x:Name="lvDeviceGroups" SeparatorVisibility="None"
+        <RelativeLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
+            <Image Source="Group.png" Aspect="AspectFit" HorizontalOptions="End"
+                   RelativeLayout.XConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-140}"
+                   RelativeLayout.YConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-140}"></Image>
+
+            <StackLayout Margin="10,0,10,0"
+                         RelativeLayout.XConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0, Constant=0}"
+                         RelativeLayout.YConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=0}"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">
+
+                <ListView x:Name="lvDeviceGroups" SeparatorVisibility="None"
                       HasUnevenRows="True"
                       ItemsSource="{Binding DeviceGroups}">
-                <ListView.Behaviors>
-                    <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding DeviceGroupTappedCommand}"></behaviors:EventToCommandBehavior>
-                </ListView.Behaviors>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <templates:DeviceListTemplate />
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+                    <ListView.Behaviors>
+                        <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding DeviceGroupTappedCommand}"></behaviors:EventToCommandBehavior>
+                    </ListView.Behaviors>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Text="Delete"
+                                        Command="{Binding Source={x:Reference DeviceListViewPage}, Path=BindingContext.RemoveCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                </ViewCell.ContextActions>
+                                <templates:DeviceListTemplate />
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+            <StackLayout x:Name="stackDeviceGroupCreate" IsVisible="{Binding IsCreateDeviceGroupVisible}"
+                         BackgroundColor="#c0808080"
+                         RelativeLayout.XConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0, Constant=0}"
+                         RelativeLayout.YConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0, Constant=0}"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">
+                <Frame BackgroundColor="White"  Margin="15,15,15,15" 
+                       IsVisible="{Binding IsCreateDeviceGroupVisible}" 
+                       CornerRadius="10"
+                       VerticalOptions="CenterAndExpand">
+                    <StackLayout Spacing="15"
+                             Padding="10,30,10,30">
+                    <controls:CustomEntry 
+                        x:Name="deviceGroupNameEntry" 
+                        Placeholder="Device name" 
+                        Text="{Binding DeviceGroupName, Mode=TwoWay}" 
+                        Style="{StaticResource EntryStyle}"/>
+                    <controls:GradientButton
+                        Text="Save" 
+                        Margin="0,10,0,0" 
+                        TextColor="White"
+                        StartColor="#FD6A00" 
+                        EndColor="#FF460B"
+                        Command="{Binding SaveCommand}"/>
+                    <controls:GradientButton
+                        Text="Cancel" 
+                        Margin="0,10,0,0" 
+                        TextColor="White"
+                        StartColor="#FD6A00" 
+                        EndColor="#FF460B"
+                        Command="{Binding CancelCommand}"/>
+                </StackLayout>
+                </Frame>
+            </StackLayout>
+        </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>

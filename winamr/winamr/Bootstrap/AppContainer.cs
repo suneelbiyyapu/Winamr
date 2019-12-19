@@ -28,6 +28,8 @@ namespace winamr.Bootstrap
             builder.RegisterType<MenuViewModel>();
             builder.RegisterType<DeviceListViewModel>();
             builder.RegisterType<DeviceViewModel>();
+            builder.RegisterType<ForgotPasswordViewModel>();
+            builder.RegisterType<MyProfileViewModel>();
 
             // Register all data services
             // builder.RegisterType<CatalogDataService>().As<ICatalogDataService>();

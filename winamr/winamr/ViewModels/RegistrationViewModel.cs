@@ -92,9 +92,9 @@ namespace winamr.ViewModels
             }
         }
 
-        private void OnLogin()
+        private async void OnLogin()
         {
-            _navigationService.NavigateToAsync<LoginViewModel>();
+            await _navigationService.NavigateToAsync<LoginViewModel>();
         }
     }
 }

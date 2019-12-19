@@ -24,6 +24,28 @@ namespace winamr.ViewModels
             }
         }
 
+        public bool isCreateDeviceGroupVisible;
+        public bool IsCreateDeviceGroupVisible
+        {
+            get => isCreateDeviceGroupVisible;
+            set
+            {
+                isCreateDeviceGroupVisible = value;
+                OnPropertyChanged(nameof(IsCreateDeviceGroupVisible));
+            }
+        }
+
+        public string deviceGroupName;
+        public string DeviceGroupName
+        {
+            get => deviceGroupName;
+            set
+            {
+                deviceGroupName = value;
+                OnPropertyChanged(nameof(IsCreateDeviceGroupVisible));
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -35,6 +57,8 @@ namespace winamr.ViewModels
             // handle this
             DeviceGroups = new ObservableCollection<DeviceGroup>();
             LoadDeviceGroups();
+
+            this.IsCreateDeviceGroupVisible = false;
         }
 
         #endregion
@@ -45,6 +69,10 @@ namespace winamr.ViewModels
         public ICommand PieTappedCommand => new Command<Pie>(OnPieTapped);
         public ICommand AddToCartCommand => new Command<Pie>(OnAddToCart);
         */
+        public ICommand AddDeviceGroupCommand => new Command(OnAddDeviceGroupTapped);
+        public ICommand SaveCommand => new Command(OnSaveDeviceGroupTapped);
+        public ICommand CancelCommand => new Command(OnCancelDeviceGroupTapped);
+        public ICommand RemoveCommand => new Command(OnRemoveDeviceGroupTapped);
         public ICommand DeviceGroupTappedCommand => new Command(OnDeviceGroupTapped);
         public ICommand ToggleIsDeviceGroupEnableCommand => new Command(OnToggleIsDeviceGroupEnable);
 
@@ -74,7 +102,10 @@ namespace winamr.ViewModels
             await _dialogService.ShowDialog("Pie added to your cart", "Success", "OK");
         }
         */
-
+        private async void OnAddDeviceGroupTapped(object addDeviceGroupTappedEventArgs)
+        {
+            this.IsCreateDeviceGroupVisible = true;
+        }
         private async void OnDeviceGroupTapped(object deviceGroupTappedEventArgs)
         {
             var selectedDeviceGroup = ((deviceGroupTappedEventArgs as ItemTappedEventArgs)?.Item as DeviceGroup);
@@ -84,6 +115,38 @@ namespace winamr.ViewModels
         private void OnToggleIsDeviceGroupEnable(object toggleDeviceGroupTappedEventArgs)
         {
 
+        }
+
+        private void OnSaveDeviceGroupTapped(object saveDeviceGroupTappedEventArgs)
+        {
+            ObservableCollection<Models.Device> lstDevice = new ObservableCollection<Models.Device>()
+            {
+                new Models.Device(){DeviceId=1, DeviceName="Device #1", DeviceType="Type1", IsDeviceEnable=true},
+                new Models.Device(){DeviceId=2, DeviceName="Device #2", DeviceType="Type2", IsDeviceEnable=false},
+                new Models.Device(){DeviceId=3, DeviceName="Device #3", DeviceType="Type3", IsDeviceEnable=true},
+                new Models.Device(){DeviceId=4, DeviceName="Device #4", DeviceType="Type4", IsDeviceEnable=false},
+                new Models.Device(){DeviceId=5, DeviceName="Device #5", DeviceType="Type5", IsDeviceEnable=true},
+            };
+
+            DeviceGroups.Add(new DeviceGroup
+            {
+                DeviceGroupId = DeviceGroups.Count + 1,
+                DeviceGroupName = DeviceGroupName,
+                IsDeviceGroupEnable = true,
+                Devices = lstDevice
+            });
+
+            this.IsCreateDeviceGroupVisible = false;
+        }
+
+        private void OnCancelDeviceGroupTapped(object cancelDeviceGroupTappedEventArgs)
+        {
+            this.IsCreateDeviceGroupVisible = false;
+        }
+
+        private void OnRemoveDeviceGroupTapped(object removeDeviceGroupTappedEventArgs)
+        {
+            DeviceGroups.Remove(removeDeviceGroupTappedEventArgs as DeviceGroup);
         }
 
         private void LoadDeviceGroups()

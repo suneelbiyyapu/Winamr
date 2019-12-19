@@ -60,7 +60,7 @@ namespace winamr.ViewModels
             {
                 MenuText = "Device Groups",
                 ViewModelToLoad = typeof(MainViewModel),
-                MenuItemType = MenuItemType.Home
+                MenuItemType = MenuItemType.DeviceGroups
             });
             /*
             MenuItems.Add(new MainMenuItem
@@ -76,14 +76,15 @@ namespace winamr.ViewModels
                 ViewModelToLoad = typeof(ShoppingCartViewModel),
                 MenuItemType = MenuItemType.ShoppingCart
             });
+            */
 
             MenuItems.Add(new MainMenuItem
             {
-                MenuText = "Contact us",
-                ViewModelToLoad = typeof(ContactViewModel),
-                MenuItemType = MenuItemType.Contact
+                MenuText = "My Profile",
+                ViewModelToLoad = typeof(MyProfileViewModel),
+                MenuItemType = MenuItemType.Profile
             });
-            */
+            
             MenuItems.Add(new MainMenuItem
             {
                 MenuText = "Log out",

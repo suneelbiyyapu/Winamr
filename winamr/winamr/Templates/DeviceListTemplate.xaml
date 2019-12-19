@@ -6,16 +6,17 @@
              mc:Ignorable="d"
              xmlns:behaviors="clr-namespace:winamr.Behaviors"
              x:Class="winamr.Templates.DeviceListTemplate">
-    <ContentView Padding="5">
-        <Frame OutlineColor="Gray" Padding="10">
-            <StackLayout Orientation="Horizontal">
-                <Label Text="{Binding DeviceGroupName}" FontSize="22" HorizontalOptions="StartAndExpand"/>
+    <ContentView.Content>
+        <!--<Frame OutlineColor="Gray" IsClippedToBounds="True" Padding="10">-->
+            <StackLayout Orientation="Horizontal" Padding="10" Margin="5,5,5,5" BackgroundColor="#f8f8f8">
+                <Image Source="Devicegroup.png" Aspect="AspectFit" HeightRequest="50" WidthRequest="50"></Image>
+                <Label Text="{Binding DeviceGroupName}" FontSize="22" VerticalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                 <Switch IsToggled="{Binding IsDeviceGroupEnable, Mode=TwoWay}" HorizontalOptions="End">
                     <Switch.Behaviors>
                         <behaviors:EventToCommandBehavior EventName="Toggled" Command="{Binding ToggleIsDeviceGroupEnableCommand}"></behaviors:EventToCommandBehavior>
                     </Switch.Behaviors>
                 </Switch>
             </StackLayout>
-        </Frame>
-    </ContentView>
+        <!--</Frame>-->
+    </ContentView.Content>
 </ContentView>

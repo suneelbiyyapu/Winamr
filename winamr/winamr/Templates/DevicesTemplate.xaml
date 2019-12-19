@@ -7,15 +7,16 @@
              xmlns:behaviors="clr-namespace:winamr.Behaviors"
              x:Class="winamr.Templates.DevicesTemplate">
     <ContentView Padding="5">
-        <Frame OutlineColor="Gray" Padding="10">
-            <StackLayout Orientation="Horizontal">
-                <Label Text="{Binding DeviceName}" FontSize="22" HorizontalOptions="StartAndExpand"/>
-                <Switch IsToggled="{Binding IsDeviceEnable, Mode=TwoWay}" HorizontalOptions="End">
-                    <Switch.Behaviors>
-                        <behaviors:EventToCommandBehavior EventName="Toggled" Command="{Binding ToggleIsDeviceGroupEnableCommand}"></behaviors:EventToCommandBehavior>
-                    </Switch.Behaviors>
-                </Switch>
-            </StackLayout>
-        </Frame>
+        <!--<Frame OutlineColor="Gray" Padding="10">-->
+        <StackLayout Orientation="Horizontal" Padding="10" Margin="5,5,5,5" BackgroundColor="#f8f8f8">
+            <Image Source="device_individual.png" Aspect="AspectFit" HeightRequest="50" WidthRequest="50"></Image>
+            <Label Text="{Binding DeviceName}" FontSize="22" HorizontalOptions="StartAndExpand"/>
+            <Switch IsToggled="{Binding IsDeviceEnable, Mode=TwoWay}" HorizontalOptions="End">
+                <Switch.Behaviors>
+                    <behaviors:EventToCommandBehavior EventName="Toggled" Command="{Binding ToggleIsDeviceGroupEnableCommand}"></behaviors:EventToCommandBehavior>
+                </Switch.Behaviors>
+            </Switch>
+        </StackLayout>
+        <!--</Frame>-->
     </ContentView>
 </ContentView>

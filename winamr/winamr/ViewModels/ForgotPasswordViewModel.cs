@@ -4,32 +4,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using winamr.Contracts.Services.General;
-using winamr.Models;
 using Xamarin.Forms;
 
 namespace winamr.ViewModels
 {
-    public class DeviceViewModel : BaseViewModel
+    public class ForgotPasswordViewModel : BaseViewModel
     {
         #region Properties
 
-        private DeviceGroup _devices;
-
-        public DeviceGroup Devices
-        {
-            get => _devices;
-            set
-            {
-                _devices = value;
-                OnPropertyChanged();
-            }
-        }
 
         #endregion
 
         #region Constructor
 
-        public DeviceViewModel(IConnectionService connectionService,
+        public ForgotPasswordViewModel(IConnectionService connectionService,
             INavigationService navigationService,
             IDialogService dialogService) : base(connectionService, navigationService, dialogService)
         {
@@ -40,12 +28,7 @@ namespace winamr.ViewModels
 
         #region Commands
 
-        /*
-        public ICommand PieTappedCommand => new Command<Pie>(OnPieTapped);
-        public ICommand AddToCartCommand => new Command<Pie>(OnAddToCart);
-        */
-
-        public ICommand AddDeviceGroupCommand => new Command(OnAddDeviceTapped);
+        public ICommand ForgotPasswordCommand => new Command(OnForgotPasswordTapped);
 
         #endregion
 
@@ -54,17 +37,16 @@ namespace winamr.ViewModels
         public override async Task InitializeAsync(object data)
         {
             // PiesOfTheWeek = (await _catalogDataService.GetPiesOfTheWeekAsync()).ToObservableCollection();
-            Devices = (DeviceGroup)data;
-            //return Task.FromResult(false);
+            // return Task.FromResult(false);
         }
 
         #endregion
 
         #region Private Methods
 
-        private async void OnAddDeviceTapped(object addDeviceTappedEventArgs)
+        private void OnForgotPasswordTapped()
         {
-
+            _navigationService.NavigateToAsync<LoginViewModel>();
         }
 
         #endregion

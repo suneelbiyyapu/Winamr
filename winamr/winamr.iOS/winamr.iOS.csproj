@@ -68,6 +68,8 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\CustomEntryRenderer.cs" />
+    <Compile Include="Renderers\GradientButtonRenderer.cs" />
+    <Compile Include="Renderers\GradientColorStackRenderer.cs" />
     <Compile Include="Renderers\GradientContentPageRenderer.cs" />
     <Compile Include="Renderers\RoundedEntryRenderer.cs" />
     <None Include="Entitlements.plist" />
@@ -140,6 +142,9 @@
     </PackageReference>
     <PackageReference Include="Autofac">
       <Version>4.9.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
+      <Version>3.0.0.5</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Essentials">
       <Version>1.0.1</Version>

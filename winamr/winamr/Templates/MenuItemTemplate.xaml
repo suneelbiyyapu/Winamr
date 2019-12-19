@@ -6,16 +6,19 @@
              mc:Ignorable="d"
              x:Class="winamr.Templates.MenuItemTemplate">
     <ContentView.Content>
-        <Grid ColumnSpacing="12" Padding="10, 10, 0, 10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Image 
+        <StackLayout>
+            <Grid ColumnSpacing="12" Padding="10, 10, 0, 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image 
                 Grid.Column="0"
                 Source="{Binding MenuItemType, Converter={StaticResource LocalMenuIconConverter}}"
                 WidthRequest="30" HeightRequest="30" VerticalOptions="Center"/>
-            <Label Grid.Column="1" Text="{Binding MenuText}" VerticalOptions="Center"/>
-        </Grid>
+                <Label Grid.Column="1" Text="{Binding MenuText}" VerticalOptions="Center"/>
+            </Grid>
+            <ContentView HeightRequest="1" HorizontalOptions="Fill" BackgroundColor="#000000"></ContentView>
+        </StackLayout>
     </ContentView.Content>
 </ContentView>

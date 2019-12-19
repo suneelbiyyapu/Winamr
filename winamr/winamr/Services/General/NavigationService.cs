@@ -107,6 +107,8 @@ namespace winamr.Services
             //_mappings.Add(typeof(PieCatalogViewModel), typeof(PieCatalogView));
             //_mappings.Add(typeof(PieDetailViewModel), typeof(PieDetailView));
             _mappings.Add(typeof(RegistrationViewModel), typeof(RegistrationView));
+            _mappings.Add(typeof(ForgotPasswordViewModel), typeof(ForgotPasswordView));
+            _mappings.Add(typeof(MyProfileViewModel), typeof(MyProfileView));
             //_mappings.Add(typeof(ShoppingCartViewModel), typeof(ShoppingCartView));
         }
 
@@ -118,7 +120,7 @@ namespace winamr.Services
             {
                 CurrentApplication.MainPage = page;
             }
-            else if (page is LoginView)
+            else if (page is LoginView || page is ForgotPasswordView)
             {
                 CurrentApplication.MainPage = page;
             }

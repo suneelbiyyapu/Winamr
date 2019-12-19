@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using winamr.Enums;
 using Xamarin.Forms;
 
 namespace winamr.Converters
@@ -10,25 +11,26 @@ namespace winamr.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            /*
             var type = (MenuItemType)value;
 
             switch (type)
             {
-                case MenuItemType.Home:
+                case MenuItemType.DeviceGroups:
                     return "ic_home.png";
-                case MenuItemType.Contact:
-                    return "ic_contact.png";
-                case MenuItemType.Pies:
-                    return "ic_pies.png";
-                case MenuItemType.ShoppingCart:
-                    return "ic_cart.png";
+                case MenuItemType.Profile:
+                    return "ic_home.png";
+                //case MenuItemType.Contact:
+                //    return "ic_contact.png";
+                //case MenuItemType.Pies:
+                //    return "ic_pies.png";
+                //case MenuItemType.ShoppingCart:
+                //    return "ic_cart.png";
                 case MenuItemType.Logout:
                     return "ic_logout.png";
                 default:
                     return string.Empty;
             }
-            */
+
             return string.Empty;
         }
 

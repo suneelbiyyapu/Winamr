@@ -8,10 +8,11 @@ namespace winamr.Enums
     {
         Browse,
         About,
-        Home,
+        DeviceGroups,
         Pies,
         ShoppingCart,
         Contact,
-        Logout
+        Logout,
+        Profile
     }
 }

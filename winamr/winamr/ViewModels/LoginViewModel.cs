@@ -106,7 +106,7 @@ namespace winamr.ViewModels
 
         private void OnForgotPassword()
         {
-            //_navigationService.NavigateToAsync<ForgotPasswordViewModel>();
+            _navigationService.NavigateToAsync<ForgotPasswordViewModel>();
         }
 
         #endregion
